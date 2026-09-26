@@ -1,0 +1,10 @@
+'use client';
+import Link from 'next/link';
+import { Check, Clock3, Flame, Star, X } from 'lucide-react';
+import { useFitLog } from '@/context/FitLogContext';
+
+export default function PlanCard({ workout, savedTab=false }) {
+  const { done, markDone, removeFromPlan, toggleSaved } = useFitLog();
+  const isDone=done.includes(workout.id);
+  return <div className={`flex flex-col gap-4 rounded-xl border border-[#292c35] bg-[#111318] p-3 sm:flex-row sm:items-center ${isDone?'opacity-70':''}`}><img src={workout.image} alt="" className="h-24 w-full rounded-lg object-cover sm:h-20 sm:w-32"/><div className="min-w-0 flex-1"><div className="flex flex-wrap gap-1">{workout.muscleGroups.map(t=><span key={t} className="rounded-full bg-lime px-2 py-0.5 text-[8px] font-extrabold text-black">{t}</span>)}</div><h3 className="display mt-2 text-2xl uppercase">{workout.name}</h3><p className="text-xs text-[#7f838d]">{workout.equipment}</p><div className="mt-2 flex gap-3 text-[10px] text-[#969aa4]"><span className="flex items-center gap-1"><Clock3 size={11}/>{workout.duration} min</span><span className="flex items-center gap-1"><Flame size={11}/>{workout.caloriesBurned} kcal</span><span className="flex items-center gap-1"><Star size={11}/>{workout.rating}</span></div></div><div className="flex flex-wrap gap-2 sm:justify-end"><Link href={`/workouts/${workout.id}`} className="dark-btn rounded-md px-3 py-2 text-[10px]">View Details</Link>{savedTab ? <button onClick={()=>toggleSaved(workout)} className="dark-btn rounded-md px-3 py-2 text-[10px]">Remove Saved</button> : <><button onClick={()=>markDone(workout.id)} disabled={isDone} className="rounded-md border border-[#30343e] px-3 py-2 text-[10px] text-[#d9dce1] disabled:opacity-50"><Check size={12} className="mr-1 inline"/>{isDone?'Done':'Mark as Done'}</button><button onClick={()=>removeFromPlan(workout.id)} aria-label="Remove" className="rounded-md border border-[#30343e] px-3 py-2 text-[#999da6] hover:text-white"><X size={14}/></button></>}</div></div>;
+}
