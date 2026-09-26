@@ -1,40 +1,56 @@
 # FitLog — Workout Library
 
-A dark, responsive workout library and daily training planner built to match the provided Figma design.
+FitLog is a dark, responsive workout library and daily training planner designed from the provided Figma layout.
 
-## Technologies
-- Next.js App Router
+## Project Overview
+
+FitLog helps users explore workouts, view detailed exercise information, create a daily workout plan, and save exercises for later.
+
+## Technologies Used
+
+- Next.js 14
 - React
+- Next.js App Router
 - Tailwind CSS
-- Lucide React icons
-- FitLog REST API
-- localStorage for plan/saved persistence
+- Lucide React
+- REST API
+- Browser localStorage
 
-## Features
-1. Responsive Figma-inspired dark UI with lime accent.
-2. API-powered workout library with loading skeletons.
-3. Workout detail pages with specs and instructions.
-4. Today's Plan with a five-lift cap, live metrics and done/remove actions.
-5. Saved workouts with persistence across reloads.
-6. Search and sort by duration, calories or rating.
-7. Toast notifications for workout actions.
-8. Custom 404 page and mobile navigation.
+## Key Features
+
+1. Responsive Figma-inspired dark gym interface.
+2. Workout library powered by the FitLog REST API.
+3. Search and sort workouts by duration, calories, or rating.
+4. Dedicated workout detail pages with instructions and specifications.
+5. Add workouts to Today's Plan with a five-lift limit.
+6. Save workouts for later.
+7. Persistent plan and saved data using localStorage.
+8. Live Exercises, Minutes, and Calories statistics.
+9. Mark planned workouts as completed or remove them.
+10. Toast notifications for workout actions.
+11. Loading states and custom 404 page.
+12. Responsive navigation for mobile, tablet, and desktop.
+
+## Pages
+
+- / — Workout Library
+- /workouts/[id] — Workout Details
+- /my-plan — Today's Plan and Saved Workouts
+- Unknown routes — Custom 404 page
 
 ## API
-- All data: `https://api.abcz.workers.dev/api/fitlog`
-- Single workout: `https://api.abcz.workers.dev/api/fitlog/:id`
 
-## Run locally
+All workout data:
+
+https://api.abcz.workers.dev/api/fitlog
+
+Single workout:
+
+https://api.abcz.workers.dev/api/fitlog/:id
+
+## Local Setup
+
+Install dependencies:
+
 ```bash
 npm install
-npm run dev
-```
-Open `http://localhost:3000`.
-
-## Build check
-```bash
-npm run build
-```
-
-## Deployment
-Import the GitHub repository into Vercel and deploy with the default Next.js settings.
